@@ -1,0 +1,148 @@
+#include <iostream>
+using namespace std; 
+
+float add(float a, float b);
+float subtract(float a, float b);
+float multiply(float a, float b);
+float divide(float a, float b);
+int modulo(int a, int b); 
+
+int main()
+{
+    
+    float num1, num2;
+    char op, choice; 
+
+    do {
+   
+        cout << "Enter first number: ";
+        cin >> num1;
+        cout << "Enter second number: ";
+        cin >> num2; 
+
+        // Input operator
+        cout << "Choose your operator from the following (+,-,*,/,%) : ";
+        cin >> op; 
+
+        // Switch for operations
+        switch(op) {
+            case '+':
+                cout << "Sum: " << add(num1, num2) << endl;
+                break;
+            case '-':
+                cout << "Difference: " << subtract(num1, num2) << endl;
+                break;
+            case '*':
+                cout << "Product: " << multiply(num1, num2) << endl;
+                break;
+            case '/':
+                cout << "Quotient: " << divide(num1, num2) << endl;
+                break;
+            case '%':
+                // Modulo only works with int, so typecast
+                cout << "Remainder: " << modulo((int)num1, (int)num2) << endl;
+                break;
+            default:
+                cout << "Invalid operator!" << endl;
+        }
+
+        cout << "Do you want to calculate again? (y/n): ";
+        cin >> choice; 
+
+    } while(choice == 'y' || choice == 'Y'); 
+
+    return 0;
+} 
+
+// Function definitions
+float add(float a, float b) { return a + b; }
+float subtract(float a, float b) { return a - b; }
+float multiply(float a, float b) { return a * b; }
+float divide(float a, float b) {
+    if(b == 0) {
+        cout << "Error: Division by zero!" << endl;
+        return 0;
+    }
+    return a / b;
+}
+int modulo(int a, int b) {
+    if(b == 0) {
+        cout << "Error: Division by zero!" << endl;
+        return 0;
+    }
+    return a % b;
+}#include <iostream>
+using namespace std; 
+
+// Function declarations
+float add(float a, float b);
+float subtract(float a, float b);
+float multiply(float a, float b);
+float divide(float a, float b);
+int modulo(int a, int b); // Function for modulo 
+
+int main()
+{
+    
+    float num1, num2;
+    char op, choice; 
+
+    do {
+      
+        cout << "Enter first number: ";
+        cin >> num1;
+        cout << "Enter second number: ";
+        cin >> num2; 
+
+      
+        cout << "Choose your operator from the following (+,-,*,/,%) : ";
+        cin >> op; 
+
+       
+        switch(op) {
+            case '+':
+                cout << "Sum: " << add(num1, num2) << endl;
+                break;
+            case '-':
+                cout << "Difference: " << subtract(num1, num2) << endl;
+                break;
+            case '*':
+                cout << "Product: " << multiply(num1, num2) << endl;
+                break;
+            case '/':
+                cout << "Quotient: " << divide(num1, num2) << endl;
+                break;
+            case '%':
+               
+                cout << "Remainder: " << modulo((int)num1, (int)num2) << endl;
+                break;
+            default:
+                cout << "Invalid operator!" << endl;
+        } 
+
+        // Ask if user wants to continue
+        cout << "Do you want to calculate again? (y/n): ";
+        cin >> choice; 
+
+    } while(choice == 'y' || choice == 'Y'); 
+
+    return 0;
+} 
+
+float add(float a, float b) { return a + b; }
+float subtract(float a, float b) { return a - b; }
+float multiply(float a, float b) { return a * b; }
+float divide(float a, float b) {
+    if(b == 0) {
+        cout << "Error: Division by zero!" << endl;
+        return 0;
+    }
+    return a / b;
+}
+int modulo(int a, int b) {
+    if(b == 0) {
+        cout << "Error: Division by zero!" << endl;
+        return 0;
+    }
+    return a % b;
+}
