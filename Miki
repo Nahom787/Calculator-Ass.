@@ -1,0 +1,92 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Driver {
+    int licenseNo;
+    string fname, lname;
+    string carModel;
+    int yearOfExperience;
+};
+
+const int MAX = 100;
+Driver drivers[MAX];
+int n = 0;
+
+void addDriver() {
+    Driver d;
+    cout << "License No: "; cin >> d.licenseNo;
+    cout << "First Name: "; cin >> d.fname;
+    cout << "Last Name: "; cin >> d.lname;
+    cout << "Car Model: "; cin >> d.carModel;
+    cout << "Years of Experience: "; cin >> d.yearOfExperience;
+    drivers[n++] = d;
+}
+
+void showAll() {
+    for (int i = 0; i < n; i++) {
+        cout << "License: " << drivers[i].licenseNo << " | "
+             << "Name: " << drivers[i].fname << " " << drivers[i].lname << " | "
+             << "Car: " << drivers[i].carModel << " | "
+             << "Experience: " << drivers[i].yearOfExperience << " yrs\n";
+    }
+}
+
+int findByLicense(int lic) {
+    for (int i = 0; i < n; i++) {
+        if (drivers[i].licenseNo == lic)
+            return i;
+    }
+    return -1;
+}
+
+void updateDriver() {
+    int lic;
+    cout << "License No to update: ";
+    cin >> lic;
+    int idx = findByLicense(lic);
+    if (idx == -1) {
+        cout << "Driver not found.\n";
+        return;
+    }
+    cout << "New Car Model: ";
+    cin >> drivers[idx].carModel;
+    cout << "New Years of Experience: ";
+    cin >> drivers[idx].yearOfExperience;
+}
+
+void deleteDriver() {
+    int lic;
+    cout << "License No to delete: ";
+    cin >> lic;
+    int idx = findByLicense(lic);
+    if (idx == -1) {
+        cout << "Driver not found.\n";
+        return;
+    }
+    for (int i = idx; i < n - 1; i++) {
+        drivers[i] = drivers[i + 1];
+    }
+    n--;
+}
+
+int main() {
+    int choice;
+    do {
+        cout << "\n🚗 Driving Record System Menu 🚗\n";
+        cout << "1. Add Driver\n";
+        cout << "2. Show All Drivers\n";
+        cout << "3. Update Driver\n";
+        cout << "4. Delete Driver\n";
+        cout << "0. Exit\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        if (choice == 1) addDriver();
+        else if (choice == 2) showAll();
+        else if (choice == 3) updateDriver();
+        else if (choice == 4) deleteDriver();
+    } while (choice != 0);
+
+    return 0;
+}
